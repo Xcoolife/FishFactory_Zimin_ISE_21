@@ -12,10 +12,10 @@ namespace FishFactoryFileImplement
     public class FileDataListSingleton
     {
         private static FileDataListSingleton instance;
-        private readonly string CannedFileName = "C:\\Users\\zimin\\source\\FishFactory_Zimin_ISE_21.git\\Canned.xml";
-        private readonly string OrderFileName = "C:\\Users\\zimin\\source\\FishFactory_Zimin_ISE_21.git\\Order.xml";
-        private readonly string ComponentFileName = "C:\\Users\\zimin\\source\\FishFactory_Zimin_ISE_21.git\\Component.xml";
-        private readonly string CannedComponentFileName = "C:\\Users\\zimin\\source\\FishFactory_Zimin_ISE_21.git\\CannedComponent.xml";
+        private readonly string CannedFileName = "Canned.xml";
+        private readonly string OrderFileName = "Order.xml";
+        private readonly string ComponentFileName = "Component.xml";
+        private readonly string CannedComponentFileName = "CannedComponent.xml";
         public List<Canned> Canneds { get; set; }
         public List<Order> Orders { get; set; }
         public List<Component> Components { get; set; }
@@ -131,11 +131,11 @@ namespace FishFactoryFileImplement
             if (Components != null)
             {
                 var xElement = new XElement("Components");
-                foreach (var Component in Components)
+                foreach (var component in Components)
                 {
-                    xElement.Add(new XElement("Components",
-                    new XAttribute("Id", Component.Id),
-                    new XElement("ComponentName", Component.ComponentName)));
+                    xElement.Add(new XElement("Component",
+                    new XAttribute("Id", component.Id),
+                    new XElement("ComponentName", component.ComponentName)));
                 }
                 XDocument xDocument = new XDocument(xElement);
                 xDocument.Save(ComponentFileName);
