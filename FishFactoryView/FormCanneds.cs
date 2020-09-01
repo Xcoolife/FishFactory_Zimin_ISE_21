@@ -13,18 +13,17 @@ using Unity;
 
 namespace FishFactoryView
 {
-    public partial class FormImplementers : Form
+    public partial class FormCanneds : Form
     {
         [Dependency]
         public new IUnityContainer Container { get; set; }
-        private readonly IImplementerLogic logic;
-
-        public FormImplementers(IImplementerLogic logic)
+        private readonly ICannedLogic logic;
+        public FormCanneds(ICannedLogic logic)
         {
             InitializeComponent();
             this.logic = logic;
         }
-        private void FormImplemetrs_Load(object sender, EventArgs e)
+        private void FormCanneds_Load(object sender, EventArgs e)
         {
             LoadData();
         }
@@ -36,13 +35,13 @@ namespace FishFactoryView
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK,
+               MessageBoxIcon.Error);
             }
         }
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            var form = Container.Resolve<FormImplementer>();
-
+            var form = Container.Resolve<FormCanned>();
             if (form.ShowDialog() == DialogResult.OK)
             {
                 LoadData();
@@ -53,9 +52,8 @@ namespace FishFactoryView
         {
             if (dataGridView.SelectedRows.Count == 1)
             {
-                var form = Container.Resolve<FormImplementer>();
+                var form = Container.Resolve<FormCanned>();
                 form.Id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
-
                 if (form.ShowDialog() == DialogResult.OK)
                 {
                     LoadData();
@@ -67,16 +65,19 @@ namespace FishFactoryView
         {
             if (dataGridView.SelectedRows.Count == 1)
             {
-                if (MessageBox.Show("Удалить запись", "Вопрос", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("Удалить запись", "Вопрос", MessageBoxButtons.YesNo,
+               MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    int id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
+                    int id =
+                   Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
                     try
                     {
-                        logic.Delete(new ImplementerBindingModel { Id = id });
+                        logic.Delete(new CannedBindingModel { Id = id });
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK,
+                       MessageBoxIcon.Error);
                     }
                     LoadData();
                 }
