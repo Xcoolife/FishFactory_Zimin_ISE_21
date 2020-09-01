@@ -71,6 +71,9 @@ model.Id);
                    || model.ClientId.HasValue && rec.ClientId == model.ClientId
                    || model.FreeOrders.HasValue && model.FreeOrders.Value && !rec.ImplementerId.HasValue
                    || model.ImplementerId.HasValue && rec.ImplementerId == model.ImplementerId && rec.Status == OrderStatus.Выполняется)
+                    .Include(rec => rec.Canned)
+                .Include(rec => rec.Client)
+                .Include(rec => rec.Implementer)
                  .Select(rec => new OrderViewModel
                    {
                      Id = rec.Id,

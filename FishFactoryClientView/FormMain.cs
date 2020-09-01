@@ -51,5 +51,11 @@ namespace FishFactoryClientView
         {
             LoadList();
         }
+        private void сообщенияToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new FormMessage();
+
+            form.ShowDialog();
+        }
     }
 }
