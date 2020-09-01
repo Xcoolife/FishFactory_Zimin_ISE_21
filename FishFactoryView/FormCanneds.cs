@@ -31,7 +31,6 @@ namespace FishFactoryView
         {
             try
             {
-                Program.ConfigGrid(logic.Read(null), dataGridView);
             }
             catch (Exception ex)
             {

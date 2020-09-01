@@ -105,13 +105,6 @@ namespace FishFactoryListImplement.Implements
             }
             return new OrderViewModel
             {
-                Id = order.Id,
-                CannedName = CannedName,
-                Count = order.Count,
-                Sum = order.Sum,
-                Status = order.Status,
-                DateCreate = order.DateCreate,
-                DateImplement = order.DateImplement
             };
         }
     }
