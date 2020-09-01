@@ -20,10 +20,10 @@ namespace FishFactoryClientView
         {
             try
             {
-                comboBoxCanned.DisplayMember = "EngineName";
+                comboBoxCanned.DisplayMember = "CannedName";
                 comboBoxCanned.ValueMember = "Id";
                 comboBoxCanned.DataSource =
-               APIClient.GetRequest<List<CannedViewModel>>("api/main/getenginelist");
+               APIClient.GetRequest<List<CannedViewModel>>("api/main/getcannedlist");
                 comboBoxCanned.SelectedItem = null;
             }
             catch (Exception ex)
@@ -40,10 +40,10 @@ namespace FishFactoryClientView
                 try
                 {
                     int id = Convert.ToInt32(comboBoxCanned.SelectedValue);
-                    CannedViewModel Engine =
-APIClient.GetRequest<CannedViewModel>($"api/main/getengine?engineId={id}");
+                    CannedViewModel Canned =
+APIClient.GetRequest<CannedViewModel>($"api/main/getcanned?cannedId={id}");
                     int count = Convert.ToInt32(textBoxCount.Text);
-                    textBoxSum.Text = (count * Engine.Price).ToString();
+                    textBoxSum.Text = (count * Canned.Price).ToString();
                 }
                 catch (Exception ex)
                 {
@@ -56,7 +56,7 @@ APIClient.GetRequest<CannedViewModel>($"api/main/getengine?engineId={id}");
         {
             CalcSum();
         }
-        private void ComboBoxEngine_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboBoxCanned_SelectedIndexChanged(object sender, EventArgs e)
         {
             CalcSum();
         }
