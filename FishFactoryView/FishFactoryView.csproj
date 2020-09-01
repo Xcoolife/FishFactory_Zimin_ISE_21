@@ -70,7 +70,6 @@
     <Compile Include="FormCanneds.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormCanneds.designer.cs">
       <DependentUpon>FormCanneds.cs</DependentUpon>
     </Compile>
     <Compile Include="FormComponent.cs">
@@ -147,6 +146,10 @@
     <ProjectReference Include="..\FishFactoryBusinessLogic\FishFactoryBusinessLogic.csproj">
       <Project>{2d68e629-864a-4ac8-8708-8bfbedbfabab}</Project>
       <Name>FishFactoryBusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FishFactoryFileImplement\FishFactoryFileImplement.csproj">
+      <Project>{64028f87-0a5f-4d34-8695-4b40185e70a9}</Project>
+      <Name>FishFactoryFileImplement</Name>
     </ProjectReference>
     <ProjectReference Include="..\FishFactoryListImplement\FishFactoryListImplement.csproj">
       <Project>{624b8bc9-0198-41c8-9037-cf4439918806}</Project>
