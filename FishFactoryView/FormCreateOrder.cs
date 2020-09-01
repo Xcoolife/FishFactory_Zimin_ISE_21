@@ -20,11 +20,13 @@ namespace FishFactoryView
         [Dependency]
         public new IUnityContainer Container { get; set; }
         private readonly ICannedLogic logicC;
+        private readonly IClientLogic logicCl;
         private readonly MainLogic logicM;
-        public FormCreateOrder(ICannedLogic logicC, MainLogic logicM)
+        public FormCreateOrder(ICannedLogic logicC, IClientLogic logicCl, MainLogic logicM)
         {
             InitializeComponent();
             this.logicC = logicC;
+            this.logicCl = logicCl;
             this.logicM = logicM;
         }
 
@@ -36,6 +38,11 @@ namespace FishFactoryView
                 comboBoxCanned.DataSource = list;
                 comboBoxCanned.DisplayMember = "CannedName";
                 comboBoxCanned.ValueMember = "Id";
+                var listCl = logicCl.Read(null);
+                comboBoxClient.DisplayMember = "ClientFIO";
+                comboBoxClient.ValueMember = "Id";
+                comboBoxClient.DataSource = listCl;
+                comboBoxClient.SelectedItem = null;
             }
             catch (Exception ex)
             {
@@ -95,6 +102,7 @@ namespace FishFactoryView
                 logicM.CreateOrder(new CreateOrderBindingModel
                 {
                     CannedId = Convert.ToInt32(comboBoxCanned.SelectedValue),
+                    ClientId = Convert.ToInt32(comboBoxClient.SelectedValue),
                     Count = Convert.ToInt32(textBoxCount.Text),
                     Sum = Convert.ToDecimal(textBoxTotal.Text)
                 }) ;

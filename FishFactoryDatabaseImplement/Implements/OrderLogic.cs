@@ -32,6 +32,7 @@ namespace FishFactoryDatabaseImplement.Implements
                     context.Orders.Add(element);
                 }
                 element.CannedId = model.CannedId == 0 ? element.CannedId : model.CannedId;
+                element.ClientId = model.ClientId == null ? element.ClientId : (int)model.ClientId;
                 element.Count = model.Count;
                 element.Sum = model.Sum;
                 element.Status = model.Status;
@@ -64,17 +65,22 @@ model.Id);
             using (var context = new FishFactoryDatabase())
             {
                 return context.Orders.Where(rec => model == null || (rec.Id == model.Id && model.Id.HasValue)
-                   || (model.DateFrom.HasValue && model.DateTo.HasValue && rec.DateCreate >= model.DateFrom && rec.DateCreate <= model.DateTo))
-                   .Select(rec => new OrderViewModel
+               || (model.DateFrom.HasValue && model.DateTo.HasValue && rec.DateCreate >= model.DateFrom && rec.DateCreate <= model.DateTo) ||
+               (model.ClientId.HasValue && rec.ClientId == model.ClientId))
+                 .Include(rec => rec.Canned)
+               .Include(rec => rec.Client)
+                  .Select(rec => new OrderViewModel
                    {
                        Id = rec.Id,
+                       ClientId = rec.ClientId,
                        CannedId = rec.CannedId,
                        DateCreate = rec.DateCreate,
                        DateImplement = rec.DateImplement,
                        Status = rec.Status,
                        Count = rec.Count,
                        Sum = rec.Sum,
-                       CannedName = rec.Canned.CannedName
+                       CannedName = rec.Canned.CannedName,
+                       ClientFIO = rec.Client.ClientFIO
                    })
                    .ToList();
             }
