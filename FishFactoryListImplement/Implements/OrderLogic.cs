@@ -88,19 +88,19 @@ namespace FishFactoryListImplement.Implements
         }
         private OrderViewModel CreateViewModel(Order Order)
         {
-            string BouquetName = "";
+            string CannedName = "";
             for (int j = 0; j < source.Canneds.Count; ++j)
             {
                 if (source.Canneds[j].Id == Order.CannedId)
                 {
-                    BouquetName = source.Canneds[j].CannedName;
+                    CannedName = source.Canneds[j].CannedName;
                     break;
                 }
             }
             return new OrderViewModel
             {
                 Id = Order.Id,
-                CannedName = BouquetName,
+                CannedName = CannedName,
                 Count = Order.Count,
                 Sum = Order.Sum,
                 Status = Order.Status,
