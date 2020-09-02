@@ -2,7 +2,7 @@
 
 namespace FishFactoryDatabaseImplement.Migrations
 {
-    public partial class ThirdMigration : Migration
+    public partial class newDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

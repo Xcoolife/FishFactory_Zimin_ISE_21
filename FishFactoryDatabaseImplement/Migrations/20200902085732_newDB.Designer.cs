@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FishFactoryDatabaseImplement.Migrations
 {
     [DbContext(typeof(FishFactoryDatabase))]
-    [Migration("20200901193632_ThirdMigration")]
-    partial class ThirdMigration
+    [Migration("20200902085732_newDB")]
+    partial class newDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
