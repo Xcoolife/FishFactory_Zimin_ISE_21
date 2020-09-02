@@ -7,6 +7,8 @@
   <ItemGroup>
     <Compile Remove="Migrations\20200827212029_InitialCreate.cs" />
     <Compile Remove="Migrations\20200827212029_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20200901105957_SecondMigration.cs" />
+    <Compile Remove="Migrations\20200901105957_SecondMigration.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,10 +30,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FishFactoryBusinessLogic\FishFactoryBusinessLogic.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>
