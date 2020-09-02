@@ -1,7 +1,10 @@
-﻿using System;
+﻿using FishFactoryBusinessLogic.Attributes;
+using FishFactoryBusinessLogic.Enums;
+using System;
 using System.ComponentModel;
 using FishFactoryBusinessLogic.Enums;
 using System.Runtime.Serialization;
+using System.Collections.Generic;
 
 namespace FishFactoryBusinessLogic.ViewModels
 {
@@ -9,39 +12,50 @@ namespace FishFactoryBusinessLogic.ViewModels
     /// <summary>
     /// Заказ
     /// </summary>
-    public class OrderViewModel
+    public class OrderViewModel : BaseViewModel
     {
-        [DataMember]
-        public int Id { get; set; }
+        
         [DataMember]
         public int ClientId { get; set; }
         [DataMember]
         public int? ImplementerId { get; set; }
         [DataMember]
         public int CannedId { get; set; }
+        [Column(title: "Клиент", width: 150)]
         [DataMember]
-        [DisplayName("Клиент")]
         public string ClientFIO { get; set; }
+        [Column(title: "Консервы", width: 100)]
         [DataMember]
-        [DisplayName("Исполнитель")]
-        public string ImplementerFIO { get; set; }
-        [DataMember]
-        [DisplayName("Консервы")]
         public string CannedName { get; set; }
+        [Column(title: "Исполнитель", width: 100)]
         [DataMember]
-        [DisplayName("Количество")]
+        public string ImplementerFIO { get; set; }
+        [Column(title: "Количество", width: 100)]
+        [DataMember]
         public int Count { get; set; }
+        [Column(title: "Сумма", width: 50)]
         [DataMember]
-        [DisplayName("Сумма")]
         public decimal Sum { get; set; }
+        [Column(title: "Статус", width: 100)]
         [DataMember]
-        [DisplayName("Статус")]
         public OrderStatus Status { get; set; }
+        [Column(title: "Дата создания", width: 100)]
         [DataMember]
-        [DisplayName("Дата создания")]
         public DateTime DateCreate { get; set; }
+        [Column(title: "Дата выполнения", width: 100)]
         [DataMember]
-        [DisplayName("Дата выполнения")]
         public DateTime? DateImplement { get; set; }
+        public override List<string> Properties() => new List<string>
+        {
+            "Id",
+            "ClientFIO",
+            "CannedName",
+            "ImplementerFIO",
+            "Count",
+            "Sum",
+            "Status",
+            "DateCreate",
+            "DateImplement"
+        };
     }
 }
