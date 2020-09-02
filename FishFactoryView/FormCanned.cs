@@ -26,7 +26,6 @@ namespace FishFactoryView
         {
             InitializeComponent();
             this.logic = service;
-            dataGridView.AllowUserToAddRows = false;
         }
         private void FormCanned_Load(object sender, EventArgs e)
         {

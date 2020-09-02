@@ -63,19 +63,20 @@ model.Id);
         {
             using (var context = new FishFactoryDatabase())
             {
-                return context.Orders.Include(rec => rec.Canned)
-            .Where(rec => model == null || rec.Id == model.Id)
-            .Select(rec => new OrderViewModel
-            {
-                Id = rec.Id,
-                CannedName = rec.Canned.CannedName,
-                Count = rec.Count,
-                Sum = rec.Sum,
-                Status = rec.Status,
-                DateCreate = rec.DateCreate,
-                DateImplement = rec.DateImplement
-            })
-            .ToList();
+                return context.Orders.Where(rec => model == null || (rec.Id == model.Id && model.Id.HasValue)
+                   || (model.DateFrom.HasValue && model.DateTo.HasValue && rec.DateCreate >= model.DateFrom && rec.DateCreate <= model.DateTo))
+                   .Select(rec => new OrderViewModel
+                   {
+                       Id = rec.Id,
+                       CannedId = rec.CannedId,
+                       DateCreate = rec.DateCreate,
+                       DateImplement = rec.DateImplement,
+                       Status = rec.Status,
+                       Count = rec.Count,
+                       Sum = rec.Sum,
+                       CannedName = rec.Canned.CannedName
+                   })
+                   .ToList();
             }
         }
     }
