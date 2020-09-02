@@ -82,7 +82,7 @@ namespace FishFactoryListImplement.Implements
         }
         private Order CreateModel(OrderBindingModel model, Order order)
         {
-            order.CannedId = model.CannedId == 0 ? order.CannedId : model.CannedId;
+            order.CannedId = model.CannedId;
             order.ClientId = (int)model.ClientId;
             order.Count = model.Count;
             order.ImplementerId = model.ImplementerId;

@@ -21,7 +21,7 @@ namespace FishFactoryDatabaseImplement.Models
         [Required]
         public DateTime DateCreate { get; set; }
         public DateTime? DateImplement { get; set; }
-        public virtual Canned Canned { get; set; }
+        public Canned Canned { get; set; }
         public Client Client { get; set; }
         public Implementer Implementer { get; set; }
     }
