@@ -231,15 +231,6 @@
     <Compile Include="FormCanneds.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormCanneds.designer.cs">
-      <DependentUpon>FormCanneds.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormClients.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormClients.Designer.cs">
-      <DependentUpon>FormClients.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormComponent.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -287,9 +278,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormCanneds.resx">
       <DependentUpon>FormCanneds.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormClients.resx">
-      <DependentUpon>FormClients.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormComponent.resx">
       <DependentUpon>FormComponent.cs</DependentUpon>
