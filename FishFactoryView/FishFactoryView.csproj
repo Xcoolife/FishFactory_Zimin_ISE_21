@@ -231,8 +231,6 @@
     <Compile Include="FormCanneds.cs">
       <SubType>Form</SubType>
     </Compile>
-      <DependentUpon>FormCanneds.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormComponent.cs">
       <SubType>Form</SubType>
     </Compile>
